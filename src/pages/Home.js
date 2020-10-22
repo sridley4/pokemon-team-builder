@@ -50,7 +50,7 @@ export default function Home() {
             <img src={pokemonElement.pokemon6Picture}></img>
           </ListGroupItem>
       ) : (
-        <LinkContainer key="new" to="/notes/new">
+        <LinkContainer key="new" to="/teams/new">
           <ListGroupItem>
             <h4>
               <b>{"\uFF0B"}</b> Create a new Team!
