@@ -9,7 +9,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 
 export default function Home() {
-  const [notes, setNotes] = useState([]);
+  const [teams, setTeams] = useState([]);
   const { isAuthenticated } = useAppContext();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,8 +20,8 @@ export default function Home() {
       }
   
       try {
-        const notes = await loadNotes();
-        setNotes(notes);
+        const teams = await loadTeams();
+        setTeams(teams);
       } catch (e) {
         onError(e);
       }
@@ -32,24 +32,28 @@ export default function Home() {
     onLoad();
   }, [isAuthenticated]);
   
-  function loadNotes() {
-    return API.get("notes", "/notes");
+  function loadTeams() {
+    return API.get("pokemonTeamApi", "/teams");
   }
   
 
-  function renderNotesList(notes) {
-    return [{}].concat(notes).map((note, i) =>
+  function renderTeamsList(pokemonList) {
+    return [{}].concat(pokemonList).map((pokemonElement, i) =>
       i !== 0 ? (
-        <LinkContainer key={note.noteId} to={`/notes/${note.noteId}`}>
-          <ListGroupItem header={note.content.trim().split("\n")[0]}>
-            {"Created: " + new Date(note.createdAt).toLocaleString()}
+          <ListGroupItem header={pokemonElement.teamId}>
+            {"Created: " + new Date(pokemonElement.createdAt).toLocaleString()}
+            <img src={pokemonElement.pokemon1Picture}></img>
+            <img src={pokemonElement.pokemon2Picture}></img>
+            <img src={pokemonElement.pokemon3Picture}></img>
+            <img src={pokemonElement.pokemon4Picture}></img>
+            <img src={pokemonElement.pokemon5Picture}></img>
+            <img src={pokemonElement.pokemon6Picture}></img>
           </ListGroupItem>
-        </LinkContainer>
       ) : (
         <LinkContainer key="new" to="/notes/new">
           <ListGroupItem>
             <h4>
-              <b>{"\uFF0B"}</b> Create a new note
+              <b>{"\uFF0B"}</b> Create a new Team!
             </h4>
           </ListGroupItem>
         </LinkContainer>
@@ -60,18 +64,18 @@ export default function Home() {
   function renderLander() {
     return (
       <div className="lander">
-        <h1>Scratch</h1>
-        <p>A simple note taking app</p>
+        <h1>Pokemon Team Builder</h1>
+        <p>A pokemon team generator app</p>
       </div>
     );
   }
 
-  function renderNotes() {
+  function renderTeams() {
     return (
-      <div className="notes">
-        <PageHeader>Your Notes</PageHeader>
+      <div className="teams">
+        <PageHeader>Your Teams</PageHeader>
         <ListGroup>
-          {!isLoading && renderNotesList(notes)}
+          {!isLoading && renderTeamsList(teams)}
         </ListGroup>
       </div>
     );
@@ -79,7 +83,7 @@ export default function Home() {
 
   return (
     <div className="Home">
-      {isAuthenticated ? renderNotes() : renderLander()}
+      {isAuthenticated ? renderTeams() : renderLander()}
     </div>
   );
 }

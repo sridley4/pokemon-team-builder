@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Home from "./containers/Home";
-import NotFound from "./containers/NotFound";
-import Login from "./containers/Login";
-import Signup from "./containers/Signup";
-import NewNote from "./containers/NewNote";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import NewTeam from "./pages/NewTeam";
 
 export default function Routes() {
   return (
@@ -19,7 +19,7 @@ export default function Routes() {
         <Signup />
       </Route>
       <Route exact path="/notes/new">
-        <NewNote />
+        <NewTeam />
       </Route>
       <Route>
         <NotFound />
