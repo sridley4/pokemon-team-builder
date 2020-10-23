@@ -28,7 +28,7 @@ export default function NewTeam() {
     setIsLoading(true);
 
     try {
-      await createNote();
+      await createTeam();
       history.push("/");
     } catch (e) {
       onError(e);
@@ -36,7 +36,7 @@ export default function NewTeam() {
     }
   }
 
-  function createNote() {
+  function createTeam() {
     return API.post("pokemonTeamApi", "/createteam", {
       body: {
         "teamId": fields.teamName,
