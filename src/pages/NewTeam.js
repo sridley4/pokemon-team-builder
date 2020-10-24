@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import { PageHeader, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { useFormFields } from "../libs/hooksLib";
 import { onError } from "../libs/errorLib";
-import config from "../config";
 import "./NewTeam.css";
 import { Card } from '../components/Card';
 import { API } from "aws-amplify";
@@ -61,7 +60,7 @@ export default function NewTeam() {
   async function getPokemon() {
     setPokemon([])
     for (let step = 0; step < 6; step++) {
-      const num = Math.floor((Math.random() * 100) + 1).toString();
+      const num = Math.floor((Math.random() * 600) + 1).toString();
       P.resource(['/api/v2/pokemon/' + num])
         .then(function (response) {
           var singleObj = {};

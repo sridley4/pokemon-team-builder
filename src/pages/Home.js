@@ -40,7 +40,7 @@ export default function Home() {
   function renderTeamsList(pokemonList) {
     return [{}].concat(pokemonList).map((pokemonElement, i) =>
       i !== 0 ? (
-          <ListGroupItem header={pokemonElement.teamId}>
+          <ListGroupItem key={pokemonElement.teamId} header={pokemonElement.teamId}>
             {"Created: " + new Date(pokemonElement.createdAt).toLocaleString()}
             <img src={pokemonElement.pokemon1Picture}></img>
             <img src={pokemonElement.pokemon2Picture}></img>

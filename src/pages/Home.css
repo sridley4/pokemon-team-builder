@@ -1,4 +1,4 @@
-.Home .notes h4 {
+.Home .pokemon h4 {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   overflow: hidden;
@@ -6,6 +6,6 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.Home .notes p {
+.Home .pokemon p {
   color: #666;
 }
